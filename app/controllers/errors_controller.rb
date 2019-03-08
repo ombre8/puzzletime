@@ -16,4 +16,8 @@ class ErrorsController < ActionController::Base
     'root'
   end
 
+  def show
+    status_code = params[:code] || 500
+    render status_code.to_s
+  end
 end

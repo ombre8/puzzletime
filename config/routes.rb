@@ -214,9 +214,9 @@ Rails.application.routes.draw do
   get 'status/health', to: 'status#health'
   get 'status/readiness', to: 'status#readiness'
 
-  get '/404', to: 'errors#404'
-  get '/500', to: 'errors#500'
-  get '/503', to: 'errors#503'
+  [404, 500, 503].each do |code|
+    get "/#{code}", to: 'errors#show', code: code
+  end
 
   get 'design_guide', to: 'design_guide#index'
 
